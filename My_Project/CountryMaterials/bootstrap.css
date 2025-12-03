@@ -1,0 +1,20 @@
+.go-back-btn {
+    display: inline-block;
+    padding: 10px 25px;
+    margin-top: 15px;
+    border-radius: 10px;
+    background: linear-gradient(to right, #6a11cb, #2575fc);
+    color: white;
+    border: none;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.go-back-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(62, 113, 196, 0.3);
+}
