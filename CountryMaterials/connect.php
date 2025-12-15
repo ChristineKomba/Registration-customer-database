@@ -9,16 +9,18 @@ if ($conn->connect_error) {
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // Collect form data safely
-    $firstName = isset($_POST['firstName']) ? trim($_POST['firstName']) : '';
-    $lastName  = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
-    $gender    = isset($_POST['gender']) ? trim($_POST['gender']) : '';
-    $email     = isset($_POST['email']) ? trim($_POST['email']) : '';
-    $company   = isset($_POST['company']) ? trim($_POST['company']) : '';
-    $phone     = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $firstName       = isset($_POST['firstName']) ? trim($_POST['firstName']) : '';
+    $lastName        = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
+    $company         = isset($_POST['company']) ? trim($_POST['company']) : '';
+    $registration    = isset($_POST['registration']) ? trim($_POST['registration']) : '';
+    $postalAddress   = isset($_POST['postalAddress']) ? trim($_POST['postalAddress']) : '';
+    $location        = isset($_POST['location']) ? trim($_POST['location']) : '';
+    $email           = isset($_POST['email']) ? trim($_POST['email']) : '';
+    $phone           = isset($_POST['phone']) ? trim($_POST['phone']) : '';
+    $physicalAddress = isset($_POST['physicalAddress']) ? trim($_POST['physicalAddress']) : '';
 
     // Simple validation
     if (empty($firstName) || empty($lastName) || empty($email)) {
-        // Redirect with error (optional)
         header("Location: view_page.php?status=empty");
         exit();
     }
@@ -30,13 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $result = $checkStmt->get_result();
 
     if ($result->num_rows > 0) {
-        // Email exists
         header("Location: view_page.php?status=exists");
         exit();
     } else {
         // Insert new user
-        $stmt = $conn->prepare("INSERT INTO registration (firstName, lastName, gender, email, company, phone) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("ssssss", $firstName, $lastName, $gender, $email, $company, $phone);
+        $stmt = $conn->prepare("INSERT INTO registration (firstname, lastname, company, registration, postalAddress, location, email, phone, physicalAddress) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("sssssssss", $firstName, $lastName, $company, $registration, $postalAddress, $location, $email, $phone, $physicalAddress);
 
         if ($stmt->execute()) {
             header("Location: view_page.php?status=success");
@@ -44,6 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         } else {
             echo "Error: " . $stmt->error;
         }
+
         $stmt->close();
     }
 

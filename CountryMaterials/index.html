@@ -3,49 +3,7 @@
 <head>
     <title>Registration Page</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <style>
-        body {
-            background: #f2f2f2;
-            font-family: Arial, sans-serif;
-        }
-        .panel {
-            margin-top: 50px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.2);
-        }
-        .panel-heading {
-            background: #007bff;
-            color: white;
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
-            padding: 20px;
-        }
-        .btn-primary {
-            width: 100%;
-        }
-
-        /* 🔹 SMALL MODERN BLUE GO BACK BUTTON */
-        .btn-back {
-            width: 60%;
-            margin: 12px auto 0 auto;
-            display: block;
-            background: #007bff;
-            color: white;
-            font-weight: 500;
-            font-size: 14px;
-            padding: 6px 10px;
-            border-radius: 6px;
-            text-align: center;
-            transition: background 0.3s ease;
-            text-decoration: none;
-        }
-
-        .btn-back:hover {
-            background: #0056b3; 
-            color: white !important;
-            text-decoration: none;
-        }
-    </style>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 <div class="container">
@@ -69,19 +27,24 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Gender</label><br>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Male" required>
-                                <label class="form-check-label">Male</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Female">
-                                <label class="form-check-label">Female</label>
-                            </div>
-                            <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="radio" name="gender" value="Other">
-                                <label class="form-check-label">Other</label>
-                            </div>
+                            <label>Company</label>
+                            <input type="text" class="form-control" name="company">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Registration</label>
+                            <input type="text" class="form-control" name="registration" required>
+                        </div>
+                        
+
+                        <div class="form-group">
+                            <label>Postal Address</label>
+                            <input type="text" class="form-control" name="postalAddress" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Location </label>
+                            <input type="text" class="form-control" name="location " required>
                         </div>
 
                         <div class="form-group">
@@ -90,13 +53,13 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Company</label>
-                            <input type="text" class="form-control" name="company">
+                            <label>Phone</label>
+                            <input type="text" class="form-control" name="phone" required>
                         </div>
 
                         <div class="form-group">
-                            <label>Phone</label>
-                            <input type="text" class="form-control" name="phone" required>
+                            <label>Physical Address</label>
+                            <input type="text" class="form-control" name="physicalAddress" required>
                         </div>
 
                         <button type="submit" class="btn btn-primary">Register</button>

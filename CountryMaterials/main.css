@@ -1,0 +1,41 @@
+body {
+            background: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        .panel {
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .panel-heading {
+            background: #007bff;
+            color: white;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            padding: 20px;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+
+        /* 🔹 SMALL MODERN BLUE GO BACK BUTTON */
+        .btn-back {
+            width: 60%;
+            margin: 12px auto 0 auto;
+            display: block;
+            background: #007bff;
+            color: white;
+            font-weight: 500;
+            font-size: 14px;
+            padding: 6px 10px;
+            border-radius: 6px;
+            text-align: center;
+            transition: background 0.3s ease;
+            text-decoration: none;
+        }
+
+        .btn-back:hover {
+            background: #0056b3; 
+            color: white !important;
+            text-decoration: none;
+        }
