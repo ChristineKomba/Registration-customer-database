@@ -1,0 +1,115 @@
+body {   
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f0f2f5, #e8edf2);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+/* FORM CONTAINER */
+.container {
+    max-width: 600px; 
+    width: 90%;       
+    margin: 50px auto;
+    background: #ffffff;
+    padding: 35px 30px; 
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* HEADERS */
+h2 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #2c2c2c;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* LABELS */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: 400;
+    color: #000; 
+}
+
+/* INPUTS AND SELECTS */
+input, select {
+    width: 100%;
+    padding: 12px 14px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    font-size: 14px;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease;
+    background: transparent;
+    box-sizing: border-box; 
+    color: #000; 
+}
+
+/* Placeholder */
+input::placeholder,
+select::placeholder {
+    color: #000;
+    opacity: 1;
+}
+
+input:focus, select:focus {
+    border-color: #4CAF50;
+    box-shadow: 0 0 6px rgba(76, 175, 80, 0.2);
+    outline: none;
+}
+
+/* BUTTONS */
+button, .go-back {
+    margin-top: 20px;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+
+.save-btn {
+    background: linear-gradient(135deg, #4CAF50, #43a047);
+}
+
+.save-btn:hover {
+    background: linear-gradient(135deg, #45a049, #39943b);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(76,175,80,0.35);
+}
+
+.go-back {
+    background: linear-gradient(135deg, #4CAF50, #43a047);
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+.go-back:hover {
+    background: linear-gradient(135deg, #45a049, #39943b);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(76,175,80,0.35);
+}
+
+/* RESPONSIVE */
+@media (max-width: 650px) {
+    .container {
+        max-width: 95%;
+        padding: 25px 20px;
+    }
+}
