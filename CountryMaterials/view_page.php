@@ -18,8 +18,7 @@ if($status == 'success'){
 <meta charset="UTF-8">
 <title>Registration Status</title>
 <link rel="stylesheet" href="view_page.css">
-
-
+<link rel="icon" type="image/jpeg" href="favicon.jpg">
 </head>
 <body>
 

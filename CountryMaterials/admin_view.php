@@ -1,5 +1,5 @@
 <?php  
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "country_materials");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -8,17 +8,18 @@ if ($conn->connect_error) {
 $result = $conn->query("SELECT * FROM registration ORDER BY created_at DESC");
 
 // Searchable fields
-$searchFields = ['firstname','lastname','company','created_at'];
+$searchFields = ['firstname','lastname','company','location'];
 
-// Display fields (must match DB column names exactly)
+// Display fields 
 $fields = ['firstname','lastname','company','registration','postalAddress','location','email','phone','physicalAddress','created_at'];
 ?>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Admin - Registered Users</title>
-    <link rel="icon" type="image/png" href="https://countrymaterial.com/itheeglu/2024/02/Country-Materials-Logo.png">
     <link rel="stylesheet" href="admin_view.css">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
 </head>
 <body>
 <div class="container">
@@ -29,11 +30,7 @@ $fields = ['firstname','lastname','company','registration','postalAddress','loca
         <?php foreach($searchFields as $index => $f): ?>
             <div>
                 <label><?php echo ucfirst(str_replace('_',' ',$f)); ?></label>
-                <?php if($f == 'created_at'): ?>
-                    <input type="text" placeholder="dd-mm-yyyy" data-column="<?php echo $index; ?>" oninput="filterTable()">
-                <?php else: ?>
-                    <input type="text" placeholder="Search <?php echo ucfirst($f); ?>" data-column="<?php echo $index; ?>" onkeyup="filterTable()">
-                <?php endif; ?>
+                <input type="text" placeholder="Search <?php echo ucfirst($f); ?>" data-column="<?php echo $index; ?>" onkeyup="filterTable()">
             </div>
         <?php endforeach; ?>
     </div>
@@ -68,7 +65,6 @@ $fields = ['firstname','lastname','company','registration','postalAddress','loca
                             $date = isset($row[$field]) ? date("d-m-Y", strtotime($row[$field])) : '';
                             echo "<td>$date</td>";
                         } elseif($field == 'location'){
-                            // Show entered value or dash if empty
                             $loc = trim($row[$field]) !== '' ? htmlspecialchars($row[$field]) : '-';
                             echo "<td>$loc</td>";
                         } else {
@@ -140,18 +136,20 @@ deleteBtn.addEventListener("click", () => {
     window.location.href = "delete_user.php?ids=" + ids.join(",");
 });
 
-// SEARCH FILTER WITH dd-mm-yyyy FORMAT
+// SEARCH FILTER
 function filterTable() {
     const inputs = document.querySelectorAll(".search-container input");
     const rows = document.querySelectorAll("#userTable tbody tr");
 
+    // Map search input index -> table column index
+    const columnMap = { 0: 1, 1: 2, 2: 3, 3: 6 }; 
     rows.forEach(row => {
         let showRow = true;
 
-        inputs.forEach(input => {
-            const columnIndex = input.dataset.column;
+        inputs.forEach((input, i) => {
             const value = input.value.toLowerCase().trim();
-            const cell = row.children[parseInt(columnIndex)+1]; // +1 due to checkbox column
+            const colIndex = columnMap[i];
+            const cell = row.children[colIndex];
 
             if (value && cell) {
                 let cellText = cell.textContent.toLowerCase().trim();

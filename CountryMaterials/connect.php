@@ -1,6 +1,6 @@
 <?php
 // Database connection
-$conn = new mysqli('localhost', 'root', '', 'test');
+$conn = new mysqli('localhost', 'root', '', 'country_materials');
 
 if ($conn->connect_error) {
     die("Connection Failed: " . $conn->connect_error);
@@ -8,7 +8,6 @@ if ($conn->connect_error) {
 
 // Check if form is submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Collect form data safely
     $firstName       = isset($_POST['firstName']) ? trim($_POST['firstName']) : '';
     $lastName        = isset($_POST['lastName']) ? trim($_POST['lastName']) : '';
     $company         = isset($_POST['company']) ? trim($_POST['company']) : '';

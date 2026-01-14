@@ -1,4 +1,101 @@
-  .go-back-btn {
+/* 1. Global & Header Styles */ 
+body {
+    font-family: Arial, sans-serif;
+    background: #e8ebf0;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    text-align: center;
+    padding: 40px;
+    background: #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.header img {
+    height: 80px;
+}
+
+/* 2. Dashboard Grid (3 per row, centered) */
+.dashboard {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    padding: 50px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* 3. Base Card Style */
+.card {
+    width: 250px;
+    height: 200px;
+    border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 18px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    text-align: center;
+}
+
+.card i {
+    font-size: 50px;
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 14px;
+    margin-top: 6px;
+    color: #ffffff;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* 4. Card Gradients */
+.register { 
+    background: linear-gradient(to right, #FFD700, #FFC107); 
+}
+
+.view-all { 
+    background: linear-gradient(to right, #4CAF50, #43A047); 
+}
+
+.import-btn { 
+    background: linear-gradient(to right, #007bff, #0056d6); 
+}
+
+.daily-report { 
+    background: linear-gradient(to right, #ff2256, #E64A19); 
+}
+
+.waste-report { 
+    background: linear-gradient(to right, #00ced1, #008b8b); 
+}
+
+.admin-btn { 
+    background: linear-gradient(to right, #3f51b5, #1a237e); 
+}
+
+/* Hover Glow Effects */
+.import-btn:hover { box-shadow: 0 12px 30px rgba(0, 91, 214, 0.4); }
+.daily-report:hover { box-shadow: 0 12px 30px rgba(230, 74, 25, 0.4); }
+.waste-report:hover { box-shadow: 0 12px 30px rgba(0, 206, 209, 0.4); }
+.admin-btn:hover { box-shadow: 0 12px 30px rgba(63, 81, 181, 0.4); }
+
+/* 5. Go Back Button */
+.go-back-btn {
     display: inline-block;
     padding: 10px 25px;
     margin-top: 15px;
@@ -18,65 +115,3 @@
     transform: scale(1.05);
     box-shadow: 0 6px 10px rgba(62, 113, 196, 0.3);
 }
-body {
-            font-family: Arial, sans-serif;
-            background: #e8ebf0;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            text-align: center;
-            padding: 40px;
-            background: #ffffff;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-        }
-        .header img {
-            height: 80px;
-        }
-        .dashboard {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 40px;
-            flex-wrap: wrap;
-            padding: 50px;
-        }
-        .card {
-            width: 250px;
-            height: 200px;
-            border-radius: 15px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-decoration: none;
-            color: white;
-            font-weight: bold;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-        }
-        .card i {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-        .card p {
-            font-size: 14px;
-            margin-top: 5px;
-            color: #ffffff;
-        }
-        .card:hover {
-            transform: translateY(-10px);
-        }
-        .register {
-            background: linear-gradient(to right, #FFD700, #FFC107);
-        }
-        .view-all {
-            background: linear-gradient(to right, #4CAF50, #43A047);
-        }
-        .import-btn {
-            background: linear-gradient(to right, #007bff, #0056d6);
-        }
-        .import-btn:hover {
-            box-shadow: 0 12px 30px rgba(0, 91, 230, 0.4);
-        }

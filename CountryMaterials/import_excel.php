@@ -4,11 +4,11 @@ error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
 // Include PhpSpreadsheet
-require 'vendor/autoload.php';  // Adjust path if needed
+require 'vendor/autoload.php';
 use PhpOffice\PhpSpreadsheet\IOFactory;
 
 if(isset($_POST['import'])){
-    $conn = new mysqli("localhost", "root", "", "test");
+    $conn = new mysqli("localhost", "root", "", "country_materials");
     if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
     // Check uploaded file
@@ -37,20 +37,23 @@ if(isset($_POST['import'])){
     $inserted = 0;
 
     foreach($sheetData as $key => $row){
-        if($key == 0) continue; // skip header
+        if($key == 0) continue; 
+        $firstname       = $conn->real_escape_string($row[0] ?? '');
+        $lastname        = $conn->real_escape_string($row[1] ?? '');
+        $company         = $conn->real_escape_string($row[2] ?? '');
+        $registration    = $conn->real_escape_string($row[3] ?? '');
+        $postalAddress   = $conn->real_escape_string($row[4] ?? '');
+        $location        = $conn->real_escape_string($row[5] ?? '');
+        $email           = $conn->real_escape_string($row[6] ?? '');
+        $phone           = $conn->real_escape_string($row[7] ?? '');
+        $physicalAddress = $conn->real_escape_string($row[8] ?? '');
+        $created_at      = date('Y-m-d H:i:s');
 
-        $firstname = $conn->real_escape_string($row[0] ?? '');
-        $lastname  = $conn->real_escape_string($row[1] ?? '');
-        $gender    = $conn->real_escape_string($row[2] ?? '');
-        $email     = $conn->real_escape_string($row[3] ?? '');
-        $company   = $conn->real_escape_string($row[4] ?? '');
-        $phone     = $conn->real_escape_string($row[5] ?? '');
-        $created_at = date('Y-m-d H:i:s');
-
+        // Skip if essential fields are empty
         if(empty($firstname) || empty($lastname)) continue;
 
-        $conn->query("INSERT INTO registration (firstname, lastname, gender, email, company, phone, created_at)
-                      VALUES ('$firstname','$lastname','$gender','$email','$company','$phone','$created_at')");
+        $conn->query("INSERT INTO registration (firstname, lastname, company, registration, postalAddress, location, email, phone, physicalAddress, created_at)
+                      VALUES ('$firstname','$lastname','$company','$registration','$postalAddress','$location','$email','$phone','$physicalAddress','$created_at')");
         $inserted++;
     }
 

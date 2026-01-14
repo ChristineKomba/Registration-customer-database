@@ -1,5 +1,5 @@
 <?php
-$conn = new mysqli("localhost", "root", "", "test");
+$conn = new mysqli("localhost", "root", "", "country_materials");
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
@@ -13,7 +13,7 @@ if (isset($_POST['import'])) {
         $sheet = $spreadsheet->getActiveSheet();
         $rows = $sheet->toArray();
 
-        array_shift($rows); // remove header
+        array_shift($rows);
 
         foreach ($rows as $row) {
             $firstName       = $conn->real_escape_string($row[0]);
@@ -27,7 +27,6 @@ if (isset($_POST['import'])) {
             $physicalAddress = $conn->real_escape_string($row[8]);
             $created_at      = date('Y-m-d H:i:s');
 
-            // Skip empty names
             if ($firstName == "" && $lastName == "") continue;
 
             // Check if email exists
@@ -56,6 +55,8 @@ if (isset($_POST['import'])) {
 <head>
     <title>Import Users</title>
     <link rel="stylesheet" href="import_page.css">
+    <link rel="icon" type="image/jpeg" href="favicon.jpg">
+
 </head>
 <body>
 <div class="container">
